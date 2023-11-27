@@ -29,6 +29,6 @@ def load_retriever(chain_conf: ChainConf):
         f"hub://{chain_conf.activeloop_org_id}/{chain_conf.activelooop_dataset_name}"
     )
     embeddings = OpenAIEmbeddings(model=chain_conf.embedding_model)
-    db = DeepLake(dataset_path=dataset_path, embedding=embeddings)
+    db = DeepLake(dataset_path=dataset_path, embedding=embeddings, read_only = True)
     retriever = db.as_retriever()
     return retriever
